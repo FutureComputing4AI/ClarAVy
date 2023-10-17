@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name="claravy"
+version="1.0.0"
+authors=[{name = "RJ Joyce", email="joyce8@umbc.edu"}]
+description="ClarAVy: Clarifying noise in antivirus scan data"
+readme="README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent"
+]
+
+[project.scripts]
+claravy = "claravy.avtagger:main_cli"
