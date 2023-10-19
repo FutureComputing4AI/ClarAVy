@@ -2,13 +2,14 @@
 
 ClarAVy is a tool for tagging malware using antivirus scan data. ClarAVy mainly tags malware according to category/behavior (e.g. ransomware, downloader, autorun) and file properties (e.g. win64, pdf, java). It can also tag malware by the vulnerability that it exploits (e.g. cve_2017_0144, ms08_067) and by packer (e.g. upx, themida).
 
-### How ClarAVy Works 
-ClarAVy takes .jsonl files as input, where each line is a JSON VirusTotal report containing antivirus results about a malicious file. ClarAVy tokenizes each antivirus label and identifies the type of each token (i.e. whether it indicates a malicious behavior, file property, etc). Then, it identifies token aliases -- tokens with different spellings but identical meanings (such as bkdr and backdoor). If enough antivirus products output the same token in their labels, it will be included as a tag in the output. 
+### How ClarAVy Works
+ClarAVy takes .jsonl files as input, where each line is a JSON VirusTotal report containing antivirus results about a malicious file. ClarAVy tokenizes each antivirus label and identifies the type of each token (i.e. whether it indicates a malicious behavior, file property, etc). Then, it identifies token aliases -- tokens with different spellings but identical meanings (such as bkdr and backdoor). If enough antivirus products output the same token in their labels, it will be included as a tag in the output.
 
 
 ### Installation:
 
 ```
+export GIT_LFS_SKIP_SMUDGE=1
 pip install git+https://github.com/NeuromorphicComputationResearchProgram/ClarAVy
 ```
 
@@ -65,7 +66,7 @@ claravy.py -f /path/to/scan_file.jsonl -al my_alias_file.txt
 
 ### Adjusting ClarAVy Ranking
 
-You can choose custom thresholds for how many antivirus products must agree in order to output a tag. By default, this is 5 for behavior and file tags, and 1 for vulnerability and packer tags. The -bt, -ft, -vt, and -pt flags set the voting thresholds for behavior, file, vulnerability, and packer tags respectively. 
+You can choose custom thresholds for how many antivirus products must agree in order to output a tag. By default, this is 5 for behavior and file tags, and 1 for vulnerability and packer tags. The -bt, -ft, -vt, and -pt flags set the voting thresholds for behavior, file, vulnerability, and packer tags respectively.
 
 ```
 claravy.py -f /path/to/scan_file.jsonl -bt 10 -ft 10 -vt 3 -pt 3
@@ -87,8 +88,34 @@ claravy.py -f /path/to/scan_file.jsonl --num-processes 8 --batch-size 4000
 
 [AVClass2](https://github.com/malicialab/avclass) is a similar tool which also use antivirus scan data to tag malware. ClarAVy distinguishes itself from AVClass2 with its comprehensive antivirus label parsing. Antivirus products output labels in many different types of formats, and certain types of tokens tend to appear in predible locations within those formats. ClarAVy uses the format of an antivirus label to select an appropriate parsing function, which then applies basic pattern matching to determine the type of each token in the label. ClarAVy supports 90 common antivirus products and can parse nearly 900 different antivirus label formats. We developed and validated ClarAVy's parser using over 1.1 billion antivirus labels, and it has coverage for over 99.5\% of them. In the cases of rare antivirus formats which ClarAVy does not support, it is able to infer the types of tokens which it has parsed elsewhere. We believe that this results in a noticable difference in tagging quality.
 
-ClarAVy also uses different strategies for identifying token aliases and for ranking tags produced by antivirus products with known correlations between them.
+ClarAVy also uses different strategies for identifying token aliases and for ranking tags produced by antivirus products with known correlations between them. There are a lot more details about how ClarAVy works in our [paper!](https://arxiv.org/abs/2310.11706) The paper also describes how we used ClarAVy to build a dataset of 5.5 million labeled malware samples. If you use our paper for your own research, please cite us:
 
+```
+@misc{joyce2023maldict,
+      title={MalDICT: Benchmark Datasets on Malware Behaviors, Platforms, Exploitation, and Packers},
+      author={Robert J. Joyce and Edward Raff and Charles Nicholas and James Holt},
+      year={2023},
+      eprint={2310.11706},
+      archivePrefix={arXiv},
+      primaryClass={cs.CR}
+}
+```
+
+## Tagged Malware Data
+
+We are releasing ClarAVy outputs for chunks 0 - 465 of the VirusShare malware corpus! The data is located in the ```VirusShare/``` directory.
+
+GIT-LFS is required to download this data due to its size (2.7GB). On Debian-based systems, GIT-LFS can be installed using:
+
+```
+sudo apt-get install git-lfs
+```
+
+After installing GIT-LFS you can download the ClarAVy output data by cloning this repository:
+
+```
+git lfs clone https://github.com/NeuromorphicComputationResearchProgram/ClarAVy/
+```
 
 ## What's Next?
 
