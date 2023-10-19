@@ -73,8 +73,6 @@ claravy.py -f /path/to/scan_file.jsonl -bt 10 -ft 10 -vt 3 -pt 3
 ```
 
 
-
-
 ### Processing Lots of Data
 
 ClarAVy supports multiprocessing and can handle tens of millions of scan reports. The --num-processes flag sets the number of workers for parsing antivirus scans in parallel, and the --batch-size flag sets the number of scans that each worker processes at a time. Increasing the number of workers and the batch size can impove runtime for large sets of scan reports, but be aware that it will also consume more memory and I/O.
@@ -90,7 +88,7 @@ claravy.py -f /path/to/scan_file.jsonl --num-processes 8 --batch-size 4000
 
 ClarAVy also uses different strategies for identifying token aliases and for ranking tags produced by antivirus products with known correlations between them. There are a lot more details about how ClarAVy works in our paper: https://arxiv.org/abs/2310.11706
 
-Our paper also discusses how we used ClarAVy to build a dataset of 5.5 million labeled malware samples. If you use our paper for your own research, please cite us:
+Our paper also discusses how we used ClarAVy to build a [dataset of 5.5 million labeled malware samples](https://github.com/joyce8/MalDICT). If you use ClarAVy for your own research, please make sure to cite us:
 
 ```
 @misc{joyce2023maldict,
@@ -105,7 +103,7 @@ Our paper also discusses how we used ClarAVy to build a dataset of 5.5 million l
 
 ## Tagged Malware Data
 
-We are releasing ClarAVy outputs for chunks 0 - 465 of the VirusShare malware corpus! The data is located in the ```VirusShare/``` directory.
+We are releasing ClarAVy outputs for chunks 0 - 465 of the VirusShare malware corpus. The data is located in the ```VirusShare/``` directory.
 
 GIT-LFS is required to download this data due to its size (925MB). On Debian-based systems, GIT-LFS can be installed using:
 
