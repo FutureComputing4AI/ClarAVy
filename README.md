@@ -1,6 +1,7 @@
 # ClarAVy
 
 ClarAVy is a tool for tagging malware using antivirus scan data. ClarAVy mainly tags malware according to category/behavior (e.g. ransomware, downloader, autorun) and file properties (e.g. win64, pdf, java). It can also tag malware by the vulnerability that it exploits (e.g. cve_2017_0144, ms08_067) and by packer (e.g. upx, themida).
+You can find the [research paper here.](https://arxiv.org/pdf/2310.11706.pdf)
 
 ### How ClarAVy Works
 ClarAVy takes .jsonl files as input, where each line is a JSON VirusTotal report containing antivirus results about a malicious file. ClarAVy tokenizes each antivirus label and identifies the type of each token (i.e. whether it indicates a malicious behavior, file property, etc). Then, it identifies token aliases -- tokens with different spellings but identical meanings (such as bkdr and backdoor). If enough antivirus products output the same token in their labels, it will be included as a tag in the output.
