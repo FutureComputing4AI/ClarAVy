@@ -84,11 +84,13 @@ claravy.py -f /path/to/scan_file.jsonl --num-processes 8 --batch-size 4000
 ```
 
 
-## What Makes ClarAVy Different from AVClass2?
+## What Makes ClarAVy Different From AVClass2?
 
 [AVClass2](https://github.com/malicialab/avclass) is a similar tool which also use antivirus scan data to tag malware. ClarAVy distinguishes itself from AVClass2 with its comprehensive antivirus label parsing. Antivirus products output labels in many different types of formats, and certain types of tokens tend to appear in predible locations within those formats. ClarAVy uses the format of an antivirus label to select an appropriate parsing function, which then applies basic pattern matching to determine the type of each token in the label. ClarAVy supports 90 common antivirus products and can parse nearly 900 different antivirus label formats. We developed and validated ClarAVy's parser using over 1.1 billion antivirus labels, and it has coverage for over 99.5\% of them. In the cases of rare antivirus formats which ClarAVy does not support, it is able to infer the types of tokens which it has parsed elsewhere. We believe that this results in a noticable difference in tagging quality.
 
-ClarAVy also uses different strategies for identifying token aliases and for ranking tags produced by antivirus products with known correlations between them. There are a lot more details about how ClarAVy works in our [paper!](https://arxiv.org/abs/2310.11706) The paper also describes how we used ClarAVy to build a dataset of 5.5 million labeled malware samples. If you use our paper for your own research, please cite us:
+ClarAVy also uses different strategies for identifying token aliases and for ranking tags produced by antivirus products with known correlations between them. There are a lot more details about how ClarAVy works in our paper: https://arxiv.org/abs/2310.11706
+
+Our paper also discusses how we used ClarAVy to build a dataset of 5.5 million labeled malware samples. If you use our paper for your own research, please cite us:
 
 ```
 @misc{joyce2023maldict,
@@ -105,7 +107,7 @@ ClarAVy also uses different strategies for identifying token aliases and for ran
 
 We are releasing ClarAVy outputs for chunks 0 - 465 of the VirusShare malware corpus! The data is located in the ```VirusShare/``` directory.
 
-GIT-LFS is required to download this data due to its size (2.7GB). On Debian-based systems, GIT-LFS can be installed using:
+GIT-LFS is required to download this data due to its size (925MB). On Debian-based systems, GIT-LFS can be installed using:
 
 ```
 sudo apt-get install git-lfs
@@ -119,4 +121,4 @@ git lfs clone https://github.com/NeuromorphicComputationResearchProgram/ClarAVy/
 
 ## What's Next?
 
-ClarAVy does not yet support tagging malware according to family. This is  feature that we are actively developing. We are also working on improved alias detection, removal of low-confidence antivirus labels, and a more intelligent voting strategy. Stay tuned for future updates!
+ClarAVy does not yet support tagging malware according to family. This is a feature that we are actively developing. We are also working on improved alias detection, removal of low-confidence antivirus labels, and a more intelligent voting strategy. Stay tuned for future updates!
