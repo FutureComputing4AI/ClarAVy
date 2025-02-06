@@ -4,7 +4,7 @@ ClarAVy (pronounced like 'clarify') is a command-line application that summarize
 
 ### Installation:
 
-ClarAVy can be installed as a pip package. After installation, ClarAVy can be run from the command line using the ```claravy``` command.
+ClarAVy can be installed as a pip package. Python 3.10+ is required. After installation, ClarAVy can be run from the command line using the ```claravy``` command.
 ```
 pip install git+https://github.com/FutureComputing4AI/ClarAVy
 ```
@@ -98,7 +98,7 @@ If you use ClarAVy for your own research, please cite us using:
 
 ```
 @misc{joyce2025claravy,
-      title={},
+      title={ClarAVy: A Tool for Scalable and Accurate Malware Family Labeling},
       author={Robert J. Joyce and Derek Everett and Maya Fuchs and Edward Raff and James Holt},
       year={2025},
       eprint={2502.02759},
