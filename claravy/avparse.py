@@ -603,6 +603,8 @@ class AVParse():
             if scan.get("result") is None:
                 continue
             label = scan["result"]
+            if not len(label):
+                continue
             loaded_report["scans"][av] = label
 
         return loaded_report
