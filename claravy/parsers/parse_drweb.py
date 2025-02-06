@@ -4,49 +4,49 @@ from claravy.taxonomy import *
 class Parse_Drweb:
 
     def __init__(self):
-        self.parse_fmt = {
-            "TOK.TOK.TOK": self.parse_fmt1,
-            "TOK.TOK.TOK.TOK": self.parse_fmt2,
-            "TOK.TOK": self.parse_fmt3,
-            "TOK TOK TOK.TOK.TOK": self.parse_fmt4,
+        self.parse_delim_fmt = {
+            "TOK.TOK.TOK": self.parse_delim_fmt1,
+            "TOK.TOK.TOK.TOK": self.parse_delim_fmt2,
+            "TOK.TOK": self.parse_delim_fmt3,
+            "TOK TOK TOK.TOK.TOK": self.parse_delim_fmt4,
         }
 
     # TOK.TOK.TOK
-    def parse_fmt1(self, tokens):
-        fmt = [PRE, UNK, UNK]
+    def parse_delim_fmt1(self, tokens):
+        tax = [PRE, UNK, UNK]
         if tokens[2] == "Packed":
-            fmt = [PRE, PACK, PRE]
+            tax = [PRE, PACK, PRE]
         elif tokens[2].isnumeric():
-            fmt = [PRE, FAM, SUF]
+            tax = [PRE, FAM, SUF]
         elif tokens[2].lower() in ["based", "origin"]:
-            fmt = [PRE, FAM, SUF]
+            tax = [PRE, FAM, SUF]
         else:
-            fmt = [PRE, PRE, FAM]
-        return fmt
+            tax = [PRE, PRE, FAM]
+        return tax
 
     # TOK.TOK.TOK.TOK
-    def parse_fmt2(self, tokens):
-        fmt = [PRE, UNK, UNK, SUF]
+    def parse_delim_fmt2(self, tokens):
+        tax = [PRE, UNK, UNK, SUF]
         if tokens[2].isnumeric() or tokens[2].lower() == "based":
-            fmt = [PRE, FAM, SUF, SUF]
+            tax = [PRE, FAM, SUF, SUF]
         else:
-            fmt = [PRE, PRE, FAM, SUF]
-        return fmt
+            tax = [PRE, PRE, FAM, SUF]
+        return tax
 
     # TOK.TOK
-    def parse_fmt3(self, tokens):
-        fmt = [UNK, UNK]
+    def parse_delim_fmt3(self, tokens):
+        tax = [UNK, UNK]
         if tokens[1].isnumeric():
             if tokens[0].isupper() or len(tokens[0]) <= 2:
-                fmt = [UNK, SUF]
+                tax = [UNK, SUF]
             else:
-                fmt = [FAM, SUF]
+                tax = [FAM, SUF]
         elif tokens[1].islower():
-            fmt = [FAM, SUF]
+            tax = [FAM, SUF]
         else:
-            fmt = [UNK, UNK] # Usually [PRE, FAM] but rarely are families in tokens[0] and tokens[1]
-        return fmt
+            tax = [UNK, UNK] # Usually [PRE, FAM] but rarely are families in tokens[0] and tokens[1]
+        return tax
 
     # TOK TOK TOK.TOK.TOK
-    def parse_fmt4(self, tokens):
+    def parse_delim_fmt4(self, tokens):
         return [PRE, PRE, PRE, FAM, SUF]

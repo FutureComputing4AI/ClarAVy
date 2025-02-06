@@ -4,30 +4,30 @@ from claravy.taxonomy import *
 class Parse_Bytehero:
 
     def __init__(self):
-        self.parse_fmt = {
-            "TOK.TOK.TOK.TOK": self.parse_fmt1,
-            "TOK.TOK.TOK.TOK.TOK": self.parse_fmt2,
-            "TOK-TOK.TOK.TOK.TOK.TOK": self.parse_fmt3,
-            "TOK-TOK.TOK.TOK.TOK": self.parse_fmt4,
+        self.parse_delim_fmt = {
+            "TOK.TOK.TOK.TOK": self.parse_delim_fmt1,
+            "TOK.TOK.TOK.TOK.TOK": self.parse_delim_fmt2,
+            "TOK-TOK.TOK.TOK.TOK.TOK": self.parse_delim_fmt3,
+            "TOK-TOK.TOK.TOK.TOK": self.parse_delim_fmt4,
         }
 
     # TOK.TOK.TOK.TOK
-    def parse_fmt1(self, tokens):
-        fmt = [CAT, UNK, FAM, SUF]
+    def parse_delim_fmt1(self, tokens):
+        tax = [CAT, UNK, FAM, SUF]
         if tokens[1] == "Exception":
-            fmt = [CAT, PRE, FAM, SUF]
+            tax = [CAT, PRE, FAM, SUF]
         else:
-            fmt = [CAT, TGT, FAM, SUF]
-        return fmt
+            tax = [CAT, FILE, FAM, SUF]
+        return tax
 
     # TOK.TOK.TOK.TOK.TOK"
-    def parse_fmt2(self, tokens):
+    def parse_delim_fmt2(self, tokens):
         return [CAT, PRE, FAM, SUF, SUF]
 
     # TOK-TOK.TOK.TOK.TOK.TOK
-    def parse_fmt3(self, tokens):
-        return [CAT, CAT, TGT, FAM, SUF, SUF]
+    def parse_delim_fmt3(self, tokens):
+        return [CAT, CAT, FILE, FAM, SUF, SUF]
 
     # TOK-TOK.TOK.TOK.TOK
-    def parse_fmt4(self, tokens):
+    def parse_delim_fmt4(self, tokens):
         return [CAT, CAT, PRE, FAM, SUF]

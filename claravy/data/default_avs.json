@@ -1,0 +1,232 @@
+{
+    "acronis": [],
+    "adaware": [
+        "bitdefender"
+    ],
+    "agnitum": [
+        "virusbuster",
+        "yandex"
+    ],
+    "ahnlabv3": [],
+    "alibaba": [
+        "alibaba"
+    ],
+    "alibabacloud": [
+        "alibaba"
+    ],
+    "alyac": [
+        "bitdefender",
+        "sophos"
+    ],
+    "antivir": [
+        "avira",
+        "qihoo360"
+    ],
+    "antiyavl": [],
+    "apex": [],
+    "arcabit": [
+        "bitdefender"
+    ],
+    "avast": [
+        "avastmobile",
+        "avg"
+    ],
+    "avastmobile": [
+        "avast",
+        "avg"
+    ],
+    "avg": [
+        "avastmobile",
+        "avast"
+    ],
+    "avira": [
+        "antivir",
+        "qihoo360"
+    ],
+    "avware": [
+        "vipre"
+    ],
+    "babable": [],
+    "baidu": [
+        "baiduinternational"
+    ],
+    "baiduinternational": [
+        "baidu"
+    ],
+    "bitdefender": [
+        "adaware",
+        "arcabit",
+        "alyac",
+        "bitdefenderfalx",
+        "bitdefendertheta",
+        "emsisoft",
+        "fireeye",
+        "fsecure",
+        "gdata",
+        "microworldescan",
+        "qihoo360",
+        "virobot"
+    ],
+    "bitdefenderfalx": [
+        "bitdefender",
+        "bitdefendertheta"
+    ],
+    "bitdefendertheta": [
+        "bitdefender",
+        "bitdefenderfalx"
+    ],
+    "bkav": [],
+    "bytehero": [],
+    "catquickheal": [],
+    "clamav": [],
+    "cmc": [],
+    "commtouch": [
+        "cyren",
+        "fprot"
+    ],
+    "comodo": [],
+    "crowdstrike": [],
+    "cybereason": [],
+    "cylance": [],
+    "cynet": [],
+    "cyren": [
+        "commtouch",
+        "fprot",
+        "cyrencloud"
+    ],
+    "cyrencloud": [
+        "cyren"
+    ],
+    "deepinstinct": [],
+    "drweb": [],
+    "egambit": [],
+    "elastic": [],
+    "emsisoft": [
+        "bitdefender"
+    ],
+    "endgame": [],
+    "esafe": [],
+    "esetnod32": [
+        "nod32"
+    ],
+    "etrustvet": [
+        "totaldefense"
+    ],
+    "fireeye": [
+        "bitdefender"
+    ],
+    "fortinet": [],
+    "fprot": [
+        "commtouch",
+        "cyren"
+    ],
+    "fsecure": [
+        "bitdefender"
+    ],
+    "gdata": [
+        "bitdefender"
+    ],
+    "google": [],
+    "gridinsoft": [],
+    "ikarus": [],
+    "invincea": [
+        "sophos"
+    ],
+    "jiangmin": [],
+    "k7antivirus": [
+        "k7gw"
+    ],
+    "k7gw": [
+        "k7antivirus"
+    ],
+    "kaspersky": [
+        "zonealarm"
+    ],
+    "kingsoft": [],
+    "lionic": [],
+    "malwarebytes": [],
+    "max": [],
+    "maxsecure": [],
+    "mcafee": [
+        "mcafeegwedition"
+    ],
+    "mcafeegwedition": [
+        "mcafee"
+    ],
+    "microsoft": [],
+    "microworldescan": [
+        "bitdefender"
+    ],
+    "nanoantivirus": [],
+    "nod32": [
+        "esetnod32"
+    ],
+    "norman": [],
+    "nprotect": [
+        "tachyon"
+    ],
+    "paloalto": [],
+    "panda": [],
+    "pctools": [],
+    "qihoo360": [
+        "bitdefender",
+        "antivir",
+        "avira"
+    ],
+    "rising": [],
+    "sangfor": [],
+    "sentinelone": [],
+    "skyhigh": [],
+    "sophos": [
+        "alyac",
+        "invincea"
+    ],
+    "superantispyware": [],
+    "symantec": [
+        "symantecmobileinsight"
+    ],
+    "symantecmobileinsight": [
+        "symantec"
+    ],
+    "tachyon": [
+        "nprotect"
+    ],
+    "tehtris": [],
+    "tencent": [],
+    "thehacker": [],
+    "totaldefense": [
+        "etrustvet"
+    ],
+    "trapmine": [],
+    "trendmicro": [
+        "trendmicrohousecall"
+    ],
+    "trendmicrohousecall": [
+        "trendmicro"
+    ],
+    "trustlook": [],
+    "varist": [],
+    "vba32": [],
+    "vipre": [
+        "avware"
+    ],
+    "virit": [],
+    "virobot": [
+        "bitdefender"
+    ],
+    "virusbuster": [
+        "agnitum",
+        "yandex"
+    ],
+    "webroot": [],
+    "xcitium": [],
+    "yandex": [
+        "agnitum",
+        "virusbuster"
+    ],
+    "zillya": [],
+    "zonealarm": [
+        "kaspersky"
+    ],
+    "zoner": []
+}

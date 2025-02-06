@@ -5,211 +5,211 @@ from claravy.taxonomy import *
 class Parse_Mcafee: # Mcafee, Mcafeegwedition both part of Mcafee
 
     def __init__(self):
-        self.parse_fmt = {
-            "TOK!TOK": self.parse_fmt1,
-            "TOK/TOK.TOK": self.parse_fmt2,
-            "TOK-TOK": self.parse_fmt3,
-            "TOK-TOK!TOK": self.parse_fmt4,
-            "TOK/TOK.TOK!TOK": self.parse_fmt5,
-            "TOK-TOK.TOK": self.parse_fmt6,
-            "TOK TOK.TOK": self.parse_fmt7,
-            "TOK/TOK.TOK.TOK": self.parse_fmt8,
-            "TOK-TOK.TOK.TOK": self.parse_fmt9,
-            "TOK/TOK": self.parse_fmt10,
-            "TOK": self.parse_fmt11,
-            "TOK/TOK-TOK.TOK": self.parse_fmt12,
-            "TOK.TOK": self.parse_fmt13,
-            "TOK.TOK!TOK": self.parse_fmt14,
-            "TOK.TOK.TOK": self.parse_fmt15,
-            "TOK-TOK-TOK": self.parse_fmt16,
-            "TOK/TOK.TOK.TOK!TOK": self.parse_fmt17,
-            "TOK TOK.TOK!TOK": self.parse_fmt18,
-            "TOK/TOK.TOK.TOK.TOK": self.parse_fmt19,
-            "TOK TOK!TOK": self.parse_fmt20,
-            "TOK!TOK.TOK": self.parse_fmt21,
-            "TOK-TOK.TOK.TOK.TOK": self.parse_fmt22,
-            "TOK/TOK-TOK": self.parse_fmt23,
+        self.parse_delim_fmt = {
+            "TOK!TOK": self.parse_delim_fmt1,
+            "TOK/TOK.TOK": self.parse_delim_fmt2,
+            "TOK-TOK": self.parse_delim_fmt3,
+            "TOK-TOK!TOK": self.parse_delim_fmt4,
+            "TOK/TOK.TOK!TOK": self.parse_delim_fmt5,
+            "TOK-TOK.TOK": self.parse_delim_fmt6,
+            "TOK TOK.TOK": self.parse_delim_fmt7,
+            "TOK/TOK.TOK.TOK": self.parse_delim_fmt8,
+            "TOK-TOK.TOK.TOK": self.parse_delim_fmt9,
+            "TOK/TOK": self.parse_delim_fmt10,
+            "TOK": self.parse_delim_fmt11,
+            "TOK/TOK-TOK.TOK": self.parse_delim_fmt12,
+            "TOK.TOK": self.parse_delim_fmt13,
+            "TOK.TOK!TOK": self.parse_delim_fmt14,
+            "TOK.TOK.TOK": self.parse_delim_fmt15,
+            "TOK-TOK-TOK": self.parse_delim_fmt16,
+            "TOK/TOK.TOK.TOK!TOK": self.parse_delim_fmt17,
+            "TOK TOK.TOK!TOK": self.parse_delim_fmt18,
+            "TOK/TOK.TOK.TOK.TOK": self.parse_delim_fmt19,
+            "TOK TOK!TOK": self.parse_delim_fmt20,
+            "TOK!TOK.TOK": self.parse_delim_fmt21,
+            "TOK-TOK.TOK.TOK.TOK": self.parse_delim_fmt22,
+            "TOK/TOK-TOK": self.parse_delim_fmt23,
         }
 
     # TOK!TOK
-    def parse_fmt1(self, tokens):
+    def parse_delim_fmt1(self, tokens):
         return [FAM, SUF]
 
     # TOK/TOK.TOK
-    def parse_fmt2(self, tokens):
-        fmt = [UNK, UNK, SUF]
+    def parse_delim_fmt2(self, tokens):
+        tax = [UNK, UNK, SUF]
         if len(tokens[1]) == 1:
-            fmt = [PRE, SUF, SUF]
+            tax = [PRE, SUF, SUF]
         else:
-            fmt = [UNK, FAM, SUF] # Is tokens[0] CAT or TGT?
-        return fmt
+            tax = [UNK, FAM, SUF] # Is tokens[0] CAT or FILE?
+        return tax
 
     # TOK-TOK
-    def parse_fmt3(self, tokens):
-        fmt = [UNK, UNK]
+    def parse_delim_fmt3(self, tokens):
+        tax = [UNK, UNK]
         if tokens[1].isupper() or tokens[1].isnumeric() or tokens[1] == "Packed":
-            fmt = [FAM, SUF]
+            tax = [FAM, SUF]
         else:
-            fmt = [CAT, FAM]
-        return fmt
+            tax = [CAT, FAM]
+        return tax
 
     # TOK-TOK!TOK
-    def parse_fmt4(self, tokens):
-        fmt = [UNK, UNK, SUF]
+    def parse_delim_fmt4(self, tokens):
+        tax = [UNK, UNK, SUF]
         if re.match(r"^Generic[A-Z]+$", tokens[0]):
-            fmt = [SUF, SUF, SUF]
+            tax = [SUF, SUF, SUF]
         elif tokens[1].isupper():
-            fmt = [FAM, SUF, SUF]
+            tax = [FAM, SUF, SUF]
         elif tokens[1].islower() or tokens[1].isnumeric(): # Bad format
-            fmt = [UNK, SUF, SUF]
+            tax = [UNK, SUF, SUF]
         elif tokens[1] == "Gen":
-            fmt = [FAM, SUF, SUF]
+            tax = [FAM, SUF, SUF]
         else:
-            fmt = [CAT, FAM, SUF]
-        return fmt
+            tax = [CAT, FAM, SUF]
+        return tax
 
     # TOK/TOK.TOK!TOK
-    def parse_fmt5(self, tokens):
-        return [TGT, FAM, SUF, SUF]
+    def parse_delim_fmt5(self, tokens):
+        return [FILE, FAM, SUF, SUF]
 
     # TOK-TOK.TOK
-    def parse_fmt6(self, tokens):
-        fmt = [CAT, UNK, UNK]
+    def parse_delim_fmt6(self, tokens):
+        tax = [CAT, UNK, UNK]
         if tokens[2].islower():
             if tokens[1].isupper() and len(tokens[1]) <= 3 and tokens[1] != "VB":
-                fmt = [CAT, SUF, SUF]
+                tax = [CAT, SUF, SUF]
             else:
-                fmt = [CAT, FAM, SUF]
+                tax = [CAT, FAM, SUF]
         else:
-            fmt = [CAT, UNK, UNK] # Bad format
-        return fmt
+            tax = [CAT, UNK, UNK] # Bad format
+        return tax
 
     # TOK TOK.TOK
-    def parse_fmt7(self, tokens):
-        fmt = [UNK, UNK, UNK]
+    def parse_delim_fmt7(self, tokens):
+        tax = [UNK, UNK, UNK]
         if tokens[2].isnumeric():
-            fmt = [FAM, FAM, UNK]
+            tax = [FAM, FAM, UNK]
         else:
-            fmt = [UNK, UNK, SUF] # Rarely [FAM, FAM, SUF] but usually [PRE, PRE, SUF]
-        return fmt
+            tax = [UNK, UNK, SUF] # Rarely [FAM, FAM, SUF] but usually [PRE, PRE, SUF]
+        return tax
 
     # TOK/TOK.TOK.TOK
-    def parse_fmt8(self, tokens):
-        fmt = [TGT, UNK, UNK, SUF]
+    def parse_delim_fmt8(self, tokens):
+        tax = [FILE, UNK, UNK, SUF]
         if tokens[2].islower() or tokens[2].isnumeric() or len(tokens[2]) <= 2:
-            fmt = [TGT, FAM, SUF, SUF]
+            tax = [FILE, FAM, SUF, SUF]
         else:
-            fmt = [TGT, PRE, FAM, SUF]
-        return fmt
+            tax = [FILE, PRE, FAM, SUF]
+        return tax
 
     # TOK-TOK.TOK.TOK
-    def parse_fmt9(self, tokens):
+    def parse_delim_fmt9(self, tokens):
         if tokens[2].islower():
             if tokens[1].isupper():
-                fmt = [CAT, UNK, SUF, SUF] # Bad format, usually SUF
+                tax = [CAT, UNK, SUF, SUF] # Bad format, usually SUF
             else:
-                fmt = [CAT, FAM, SUF, SUF]
+                tax = [CAT, FAM, SUF, SUF]
         else:
-            fmt = [PRE, UNK, UNK, SUF] # Rare bad format
-        return fmt
+            tax = [PRE, UNK, UNK, SUF] # Rare bad format
+        return tax
 
     # TOK/TOK
-    def parse_fmt10(self, tokens):
+    def parse_delim_fmt10(self, tokens):
         if len(tokens[1]) <= 2 and tokens[1] != "VB":
-            fmt = [TGT, SUF]
+            tax = [FILE, SUF]
         elif tokens[1].isupper() or tokens[1].islower():
-            fmt = [TGT, UNK] # Bad format
+            tax = [FILE, UNK] # Bad format
         else:
-            fmt = [TGT, FAM]
-        return fmt
+            tax = [FILE, FAM]
+        return tax
 
     # TOK
-    def parse_fmt11(self, tokens):
+    def parse_delim_fmt11(self, tokens):
         return [FAM]
 
     # TOK/TOK-TOK.TOK
-    def parse_fmt12(self, tokens):
-        fmt = [TGT, CAT, UNK, SUF]
+    def parse_delim_fmt12(self, tokens):
+        tax = [FILE, CAT, UNK, SUF]
         if tokens[2].islower():
-            fmt = [TGT, CAT, SUF, SUF]
+            tax = [FILE, CAT, SUF, SUF]
         elif tokens[2].isupper() and not any([c.isdigit() for c in tokens[2]]):
-            fmt = [TGT, CAT, SUF, SUF]
+            tax = [FILE, CAT, SUF, SUF]
         else:
-            fmt = [TGT, CAT, FAM, SUF]
-        return fmt
+            tax = [FILE, CAT, FAM, SUF]
+        return tax
 
     # TOK.TOK
-    def parse_fmt13(self, tokens):
+    def parse_delim_fmt13(self, tokens):
         if tokens[1].isnumeric() or tokens[1].islower() or tokens[1].isupper():
-            fmt = [FAM, SUF]
+            tax = [FAM, SUF]
         else:
-            fmt = [UNK, UNK] # Bad format
-        return fmt
+            tax = [UNK, UNK] # Bad format
+        return tax
 
     # TOK.TOK!TOK
-    def parse_fmt14(self, tokens):
-        return self.parse_fmt13(tokens) + [SUF]
+    def parse_delim_fmt14(self, tokens):
+        return self.parse_delim_fmt13(tokens) + [SUF]
 
     # TOK.TOK.TOK
-    def parse_fmt15(self, tokens):
-        fmt = [UNK, UNK, UNK]
+    def parse_delim_fmt15(self, tokens):
+        tax = [UNK, UNK, UNK]
         if tokens[1].islower():
-            fmt = [FAM, SUF, SUF]
+            tax = [FAM, SUF, SUF]
         elif tokens[1].isnumeric():
             if tokens[2].islower():
-                fmt = [FAM, SUF, SUF]
+                tax = [FAM, SUF, SUF]
             else:
-                fmt = [UNK, SUF, UNK] # Bad format
+                tax = [UNK, SUF, UNK] # Bad format
         else:
-            fmt = [UNK, UNK, SUF] # Bad format
-        return fmt
+            tax = [UNK, UNK, SUF] # Bad format
+        return tax
 
     # TOK-TOK-TOK
-    def parse_fmt16(self, tokens):
-        fmt = [UNK, UNK, UNK]
+    def parse_delim_fmt16(self, tokens):
+        tax = [UNK, UNK, UNK]
         if re.match(r"^CVE[0-9]+$", tokens[1]) and tokens[2].isnumeric():
-            fmt = [PRE, VULN, VULN]
+            tax = [PRE, VULN, VULN]
         elif re.match(r"^MS[0-9]+$", tokens[1]) and tokens[2].isnumeric():
-            fmt = [PRE, VULN, VULN]
+            tax = [PRE, VULN, VULN]
         elif tokens[1].isupper():
-            fmt = [PRE, SUF, SUF]
+            tax = [PRE, SUF, SUF]
         else:
-            fmt = [PRE, FAM, SUF]
-        return fmt
+            tax = [PRE, FAM, SUF]
+        return tax
 
     # TOK/TOK.TOK.TOK!TOK
-    def parse_fmt17(self, tokens):
-        return [TGT, FAM, PRE, SUF, SUF]
+    def parse_delim_fmt17(self, tokens):
+        return [FILE, FAM, PRE, SUF, SUF]
 
     # TOK TOK.TOK!TOK
-    def parse_fmt18(self, tokens):
+    def parse_delim_fmt18(self, tokens):
         return [PRE, PRE, SUF, SUF]
 
     # TOK/TOK.TOK.TOK.TOK
-    def parse_fmt19(self, tokens):
-        return [TGT, FAM, UNK, SUF, SUF] # tokens[2] either CAT or SUF
+    def parse_delim_fmt19(self, tokens):
+        return [FILE, FAM, UNK, SUF, SUF] # tokens[2] either CAT or SUF
 
     # TOK TOK!TOK
-    def parse_fmt20(self, tokens):
+    def parse_delim_fmt20(self, tokens):
         return [PRE, FAM, SUF]
 
     # TOK!TOK.TOK
-    def parse_fmt21(self, tokens):
+    def parse_delim_fmt21(self, tokens):
         return [FAM, SUF, SUF]
 
     # TOK-TOK.TOK.TOK.TOK
-    def parse_fmt22(self, tokens):
-        return self.parse_fmt9(tokens) + [SUF]
+    def parse_delim_fmt22(self, tokens):
+        return self.parse_delim_fmt9(tokens) + [SUF]
 
     # TOK/TOK-TOK
-    def parse_fmt23(self, tokens):
-        fmt = [TGT, CAT, UNK]
+    def parse_delim_fmt23(self, tokens):
+        tax = [FILE, CAT, UNK]
         if tokens[2].islower():
-            fmt = [TGT, CAT, SUF]
+            tax = [FILE, CAT, SUF]
         elif tokens[2].isupper() and not any([c.isdigit() for c in tokens[2]]):
-            fmt = [TGT, CAT, SUF]
+            tax = [FILE, CAT, SUF]
         else:
-            fmt = [TGT, CAT, FAM]
-        return fmt
+            tax = [FILE, CAT, FAM]
+        return tax
 
     

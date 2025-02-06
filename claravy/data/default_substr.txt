@@ -1,10 +1,14 @@
 [SUBSTR]
 agent-
 backdoor-
+bank-
 banker-
+cryp-
+crypt-
 download-
 downloader-
 hacktool-
+hp-
 infostealer-
 psw-
 ransom-
@@ -18,3 +22,9 @@ trojan-
 -dll
 -door
 -rat
+-ransom
+-plugin
+-drop
+-crypt
+-net
+-kd

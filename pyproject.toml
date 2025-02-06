@@ -1,17 +1,30 @@
 [build-system]
-requires = ["setuptools", "setuptools-scm"]
+requires = ["setuptools>=71.0.0", "setuptools-scm"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name="claravy"
-version="1.0.0"
+version="2.0.0"
 authors=[{name = "RJ Joyce", email="joyce8@umbc.edu"}]
 description="ClarAVy: Clarifying noise in antivirus scan data"
 readme="README.md"
-requires-python = ">=3.8"
+requires-python = ">=3.10"
 classifiers = [
     "Programming Language :: Python :: 3",
     "Operating System :: OS Independent"
+]
+dependencies = [
+    "numpy>=1.26.4",
+    "scipy==1.11.0",
+    "ultradict",
+    "pylcs",
+    "editdistance",
+    "atomics",
+    "xgboost==2.1.1",
+    "joblib",
+    "numba>=0.61.0",
+    "numba-scipy>=0.4.0",
+    "scikit-learn==1.5.2"
 ]
 
 [project.scripts]
