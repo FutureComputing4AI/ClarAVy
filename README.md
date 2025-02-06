@@ -92,17 +92,25 @@ claravy -f examples/v3_scan.jsonl --num-processes 8 --batch-size 4096
 
 [AVClass](https://github.com/malicialab/avclass) is a similar tool which also use antivirus scan data to tag malware. ClarAVy distinguishes itself from AVClass2 with its comprehensive antivirus label parsing. Antivirus products output labels in many different types of formats, and certain types of tokens tend to appear in predible locations within those formats. ClarAVy uses the format of an antivirus label to select an appropriate parsing function, which then applies basic pattern matching to determine the type of each token in the label. ClarAVy supports 103 common antivirus products and can parse over 900 different antivirus label formats. ClarAVy's parsers have coverage for 99.5\% of the 1.1 billion antivirus labels we tested the tool with. When ClarAVy encounters a rare antivirus label format it does not support, it is able to make inferences about tokens it has parsed elsewhere.
 
-ClarAVy also uses different strategies for identifying token aliases and for ranking tags produced by antivirus products with known correlations between them. It uses a Variational Bayesian approach for intelligently inferring the most likely malware family. For even more details about how ClarAVy works, please refer to our paper: https://arxiv.org/abs/2502.02759
-
-If you use ClarAVy for your own research, please cite us using:
+ClarAVy also uses different strategies for identifying token aliases and for ranking tags produced by antivirus products with known correlations between them. It uses a Variational Bayesian approach for intelligently inferring the most likely malware family. To learn more about how ClarAVy predicts family labels, please refer to our paper: https://arxiv.org/abs/2502.02759. If you use ClarAVy for your research, please cite it using:
 
 ```
-@misc{joyce2025claravy,
+@inproceedings{joyce2025claravy,
       title={ClarAVy: A Tool for Scalable and Accurate Malware Family Labeling},
       author={Robert J. Joyce and Derek Everett and Maya Fuchs and Edward Raff and James Holt},
       year={2025},
-      eprint={2502.02759},
-      archivePrefix={arXiv},
-      primaryClass={cs.CR}
+      booktitle={Companion of the 16th ACM/SPEC International Conference on Performance Engineering (WWW Companion '25)},
+}
+```
+
+ClarAVy was used to label 5.5 million files in the MalDICT dataset. If you plan to use ClarAVy to label large malware datasets, please use our other paper: https://arxiv.org/abs/2310.11706
+
+```
+@inproceedings{joyce2023maldict,
+  title={MalDICT: Benchmark Datasets on Malware Behaviors, Platforms, Exploitation, and Packers}, 
+      author={Robert J. Joyce and Edward Raff and Charles Nicholas and James Holt},
+      year={2023},
+  booktitle={Proceedings of the Conference on Applied Machine Learning in Information Security},
+  pages={105-121},
 }
 ```
