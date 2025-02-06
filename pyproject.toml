@@ -13,19 +13,3 @@ classifiers = [
     "Programming Language :: Python :: 3",
     "Operating System :: OS Independent"
 ]
-dependencies = [
-    "numpy>=1.26.4",
-    "scipy==1.11.0",
-    "ultradict",
-    "pylcs",
-    "editdistance",
-    "atomics",
-    "xgboost==2.1.1",
-    "joblib",
-    "numba>=0.61.0",
-    "numba-scipy>=0.4.0",
-    "scikit-learn==1.5.2"
-]
-
-[project.scripts]
-claravy = "claravy.avtagger:main_cli"
