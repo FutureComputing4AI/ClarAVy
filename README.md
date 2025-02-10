@@ -81,7 +81,7 @@ claravy -f examples/v3_scan.jsonl -bt 10 -ft 10 -vt 3 -pt 3 -gt 3
 
 ### Processing Lots of Data
 
-ClarAVy supports multiprocessing and can handle tens of millions of scan reports. The --num-processes flag sets the number of workers for parsing antivirus scans in parallel, and the --batch-size flag sets the number of scans that each worker processes at a time. Increasing the number of workers and the batch size will impove runtime for large sets of scan reports, but it will also consume more memory and increase I/O.
+ClarAVy supports multiprocessing and can handle tens of millions of scan reports. The --num-processes flag sets the number of workers for parsing antivirus scans in parallel, and the --batch-size flag sets the number of scans that each worker processes at a time. Increasing the number of workers and the batch size will improve runtime for large sets of scan reports, but it will also consume more memory and increase I/O.
 
 ```
 claravy -f examples/v3_scan.jsonl --num-processes 8 --batch-size 4096
