@@ -1,9 +1,11 @@
 import copy
 import numpy as np
 import scipy.special as sc
-from numba import njit, prange
+from numba import jit, njit, prange
 from numba.types import int64, float64
 from numba.experimental import jitclass
+
+from claravy.ibcc.utils import psi_2d
 
 
 # Adapted from https://github.com/UKPLab/arxiv2018-bayesian-ensembles/blob/
@@ -192,7 +194,7 @@ def p_update_alpha(C, L, co_occurs, scan_labels, label_offsets, scan_offsets,
     return alpha
 
 
-@njit(parallel=True)
+@jit(nopython=True)
 def p_q_pi(L, K, co_occurs, label_offsets, alpha):
     """Compute ln of the confusion matrix Pi in parallel.
 
@@ -216,22 +218,14 @@ def p_q_pi(L, K, co_occurs, label_offsets, alpha):
             alpha_sum[j, :] += alpha[idx, :]
 
     # Compute psi(sum of alpha) for each family and for each AV product.
-    # Unable to broadcast the psi() function, which only takes scalar args
-    # when used with numba. Instead, we have to explicitly iterate over L and K
-    psi_alpha_sum = np.zeros((L, K), dtype=np.float64)
-    for i in prange(L):
-        for j in range(K):
-            psi_alpha_sum[i,j] = sc.psi(alpha_sum[i,j])
+    psi_alpha_sum = psi_2d(alpha_sum) # (L, K)
 
     # Compute psi(alpha)
-    psi_alpha = np.zeros(alpha.shape, dtype=np.float64)
-    for i in prange(alpha.shape[0]):
-        for j in range(alpha.shape[1]):
-            psi_alpha[i,j] = sc.psi(alpha[i,j])
+    psi_alpha = psi_2d(alpha) # (?, K)
 
     # Compute lnPi
     lnPi = np.zeros(alpha.shape, dtype=np.float64)
-    for i in prange(L):
+    for i in range(L):
         start_off = label_offsets[i]
         end_off = label_offsets[i+1]
         for idx in range(start_off, end_off):

@@ -5,7 +5,7 @@ from numba.experimental import jitclass
 from numba import njit, prange
 
 from claravy.ibcc.annotator import ConfusionMatrixAnnotator
-from claravy.ibcc.utils import unique
+from claravy.ibcc.utils import unique, psi_0d, psi_1d
 
 spec = [
     ("scan_labels", int64[:]),
@@ -60,10 +60,8 @@ class IndependentLabelModel:
 
         # lnB stores the log probabilities of each family
         # Initialize lnB using beta0
-        beta0_sum = sc.psi(np.sum(self.beta0))
-        self.lnB = np.zeros(self.L, dtype=np.float64)
-        for i in range(self.L):
-            self.lnB[i] = sc.psi(self.beta0[i])
+        self.lnB = psi_1d(self.beta0) # (L)
+        beta0_sum = psi_0d(np.sum(self.beta0))
         self.lnB -= beta0_sum
 
         # For each VirusTotal scan, we initialize the corresponding entry in Et
@@ -159,10 +157,8 @@ def p_update_B(Et, scan_labels, scan_offsets, beta, N):
             beta[label] += probs[label_idx]
 
     # Compute lnB using beta
-    lnB = np.zeros(L, dtype=np.float64)
-    for i in prange(L):
-        lnB[i] = sc.psi(beta[i])
-    lnB -= sc.psi(np.sum(beta, -1))
+    lnB = psi_1d(beta)
+    lnB -= psi_0d(np.sum(beta, -1))
     return lnB
 
 

@@ -14,3 +14,47 @@ def unique(X):
         else:
             counts[-1] += 1
     return unique, counts
+
+
+# From https://gist.github.com/timvieira/656d9c74ac5f82f596921aa20ecb6cc8
+@jit(nopython=True)
+def psi_0d(x):
+    """Fast approximation of the digamma function. Assumes x > 0."""
+    r = 0
+    while(x <= 5):
+        r = r - (1 / x)
+        x += 1
+    f = (x * x)
+    f = 1 / f
+    t = f * (-1/12.0 + f * (1/120.0 + f * (-1/252.0 + f * (1/240.0 + f * (-1 / 132.0 + f * (691/32760.0 + f * (-1/12.0 + f * 3617/8160.0)))))))
+    return r + np.log(x) - 0.5 / x + t
+
+
+@jit(nopython=True)
+def psi_1d(x):
+    """Fast approximation of the digamma function. Assumes x > 0."""
+    r = np.zeros(x.shape[0], dtype=x.dtype)
+    while(np.all(x <= 5)):
+        r = r - (1 / x)
+        x += 1
+    f = (x * x)
+    f = 1 / f
+    t = f * (-1/12.0 + f * (1/120.0 + f * (-1/252.0 + f * (1/240.0 + f * (-1 / 132.0 + f * (691/32760.0 + f * (-1/12.0 + f * 3617/8160.0)))))))
+    return r + np.log(x) - 0.5 / x + t
+
+
+@jit(nopython=True)
+def psi_2d(x_2d):
+    """Fast approximation of the digamma function. Assumes x > 0."""
+    d1, d2 = x_2d.shape
+    x = x_2d.flatten() # Have to flatten X for numba compatibility
+    r = np.zeros(x.shape[0], dtype=x.dtype)
+    while(np.all(x <= 5)):
+        r = r - (1 / x)
+        x += 1
+    f = (x * x)
+    f = 1 / f
+    t = f * (-1/12.0 + f * (1/120.0 + f * (-1/252.0 + f * (1/240.0 + f * (-1 / 132.0 + f * (691/32760.0 + f * (-1/12.0 + f * 3617/8160.0)))))))
+    x = r + np.log(x) - 0.5 / x + t
+    x_2d = x.reshape(d1, d2)
+    return x_2d
