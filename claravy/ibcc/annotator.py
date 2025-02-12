@@ -5,7 +5,7 @@ from numba import jit, njit, prange
 from numba.types import int64, float64
 from numba.experimental import jitclass
 
-from claravy.ibcc.utils import psi_2d
+from claravy.ibcc.utils import psi
 
 
 # Adapted from https://github.com/UKPLab/arxiv2018-bayesian-ensembles/blob/
@@ -218,10 +218,10 @@ def p_q_pi(L, K, co_occurs, label_offsets, alpha):
             alpha_sum[j, :] += alpha[idx, :]
 
     # Compute psi(sum of alpha) for each family and for each AV product.
-    psi_alpha_sum = psi_2d(alpha_sum) # (L, K)
+    psi_alpha_sum = psi(alpha_sum) # (L, K)
 
     # Compute psi(alpha)
-    psi_alpha = psi_2d(alpha) # (?, K)
+    psi_alpha = psi(alpha) # (?, K)
 
     # Compute lnPi
     lnPi = np.zeros(alpha.shape, dtype=np.float64)
