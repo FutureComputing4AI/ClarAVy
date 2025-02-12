@@ -1,4 +1,5 @@
 import numba
+import scipy.special as sc
 import numpy as np
 from numba import jit
 
@@ -17,17 +18,6 @@ def unique(X):
     return unique, counts
 
 
-# From https://gist.github.com/timvieira/656d9c74ac5f82f596921aa20ecb6cc8
 @numba.vectorize
-def psi(x):
-    """Fast approximation of the digamma function. Assumes x > 0."""
-    if x < 0:
-        raise ValueError("digamma input must be greater than 0")
-    r = 0
-    while(x <= 5):
-        r = r - (1 / x)
-        x += 1
-    f = (x * x)
-    f = 1 / f
-    t = f * (-1/12.0 + f * (1/120.0 + f * (-1/252.0 + f * (1/240.0 + f * (-1 / 132.0 + f * (691/32760.0 + f * (-1/12.0 + f * 3617/8160.0)))))))
-    return r + np.log(x) - 0.5 / x + t
+def psi(X):
+    return sc.psi(X)
