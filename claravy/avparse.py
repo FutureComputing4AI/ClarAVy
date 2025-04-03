@@ -44,7 +44,8 @@ class AVParse():
         self.vocab_updated = False
 
         # Read from configuration files
-        self.supported_avs, self.correlated_avs = self.read_avs(av_path)
+        av_info = self.read_avs(av_path)
+        self.supported_avs, self.correlated_avs, self.av_weights = av_info
         self.ignorelist = self.read_ignorelist(ignore_path)
 
         # Load parsers for each AV product
@@ -75,23 +76,28 @@ class AVParse():
         Returns:
         supported_avs - set of supported AV products
         correlated_avs - dict mapping each AV to a set of related AV products
+        av_weights - weights of AV products for SparseIBCC
         """
 
         # Read AVs from av_path
         with open(av_path, "r") as f:
-            _correlated_avs = json.loads(f.read())
-        supported_avs = set(_correlated_avs.keys())
+            av_info = json.loads(f.read())
+        supported_avs = set(av_info.keys())
 
         # Extend correlated AVs to a depth of 2
         correlated_avs = {}
         for start_av in supported_avs:
-            av_set = {av for av in _correlated_avs[start_av]}
+            av_set = {av for av in av_info[start_av]["corr_avs"]}
             for next_av in list(av_set):
-                av_set.update({av for av in _correlated_avs[next_av]})
+                av_set.update({av for av in av_info[next_av]["corr_avs"]})
             av_set.add(start_av)
             correlated_avs[start_av] = av_set
 
-        return supported_avs, correlated_avs
+        # Get AV weights
+        av_weights = []
+        for av in sorted(supported_avs):
+            av_weights.append(av_info[av]["av_weight"])
+        return supported_avs, correlated_avs, av_weights
 
 
     def get_av_count(self, tok, tok_avs):

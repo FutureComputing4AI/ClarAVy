@@ -20,6 +20,7 @@ spec = [
     ("lnPi", float64[:, :]),
     ("L", int64),
     ("K", int64),
+    ("W", float64[:]),
     ("n_jobs", int64),
 ]
 
@@ -27,7 +28,7 @@ spec = [
 class ConfusionMatrixAnnotator:
 
     def __init__(self, co_occurs, scan_labels, label_offsets, scan_offsets, L,
-                 K, n_jobs):
+                 K, W, n_jobs):
         """Estimate the confusion matrix Pi for each annotator. We assume that
         most malware families don't co-occur within VirusTotal scans, allowing
         a sparse format to be used.
@@ -52,6 +53,7 @@ class ConfusionMatrixAnnotator:
         self.n_jobs = n_jobs
         self.L = L
         self.K = K
+        self.W = W
 
         # alpha0 is the initial state of the  Dirichlet prior on the
         # confusion matrix Pi. Entries where two families never co-occur are
@@ -80,13 +82,17 @@ class ConfusionMatrixAnnotator:
             co_occur_row = self.co_occurs[start_off:end_off]
             for j in co_occur_row:
                 if j == i:
-                    alpha0.append(2.0)
+                    alpha0.append(0.0)
                 else:
                     alpha0.append(1.0)
 
         # Repeat alpha0 for each of the K antivirus products
         np_alpha0 = np.array(alpha0, dtype=np.float64)
         self.alpha0 = np_alpha0.repeat(K).reshape((-1, K))
+
+        # Assign diagonal entries of each annotator's confusion matrix using W
+        for i in range(K):
+            self.alpha0[self.alpha0[:, i] == 0.0, i] = 1.0 + self.W[i]
         return
 
 

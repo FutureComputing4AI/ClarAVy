@@ -1,232 +1,541 @@
 {
-    "acronis": [],
-    "adaware": [
-        "bitdefender"
-    ],
-    "agnitum": [
-        "virusbuster",
-        "yandex"
-    ],
-    "ahnlabv3": [],
-    "alibaba": [
-        "alibaba"
-    ],
-    "alibabacloud": [
-        "alibaba"
-    ],
-    "alyac": [
-        "bitdefender",
-        "sophos"
-    ],
-    "antivir": [
-        "avira",
-        "qihoo360"
-    ],
-    "antiyavl": [],
-    "apex": [],
-    "arcabit": [
-        "bitdefender"
-    ],
-    "avast": [
-        "avastmobile",
-        "avg"
-    ],
-    "avastmobile": [
-        "avast",
-        "avg"
-    ],
-    "avg": [
-        "avastmobile",
-        "avast"
-    ],
-    "avira": [
-        "antivir",
-        "qihoo360"
-    ],
-    "avware": [
-        "vipre"
-    ],
-    "babable": [],
-    "baidu": [
-        "baiduinternational"
-    ],
-    "baiduinternational": [
-        "baidu"
-    ],
-    "bitdefender": [
-        "adaware",
-        "arcabit",
-        "alyac",
-        "bitdefenderfalx",
-        "bitdefendertheta",
-        "emsisoft",
-        "fireeye",
-        "fsecure",
-        "gdata",
-        "microworldescan",
-        "qihoo360",
-        "virobot"
-    ],
-    "bitdefenderfalx": [
-        "bitdefender",
-        "bitdefendertheta"
-    ],
-    "bitdefendertheta": [
-        "bitdefender",
-        "bitdefenderfalx"
-    ],
-    "bkav": [],
-    "bytehero": [],
-    "catquickheal": [],
-    "clamav": [],
-    "cmc": [],
-    "commtouch": [
-        "cyren",
-        "fprot"
-    ],
-    "comodo": [],
-    "crowdstrike": [],
-    "cybereason": [],
-    "cylance": [],
-    "cynet": [],
-    "cyren": [
-        "commtouch",
-        "fprot",
-        "cyrencloud"
-    ],
-    "cyrencloud": [
-        "cyren"
-    ],
-    "deepinstinct": [],
-    "drweb": [],
-    "egambit": [],
-    "elastic": [],
-    "emsisoft": [
-        "bitdefender"
-    ],
-    "endgame": [],
-    "esafe": [],
-    "esetnod32": [
-        "nod32"
-    ],
-    "etrustvet": [
-        "totaldefense"
-    ],
-    "fireeye": [
-        "bitdefender"
-    ],
-    "fortinet": [],
-    "fprot": [
-        "commtouch",
-        "cyren"
-    ],
-    "fsecure": [
-        "bitdefender"
-    ],
-    "gdata": [
-        "bitdefender"
-    ],
-    "google": [],
-    "gridinsoft": [],
-    "ikarus": [],
-    "invincea": [
-        "sophos"
-    ],
-    "jiangmin": [],
-    "k7antivirus": [
-        "k7gw"
-    ],
-    "k7gw": [
-        "k7antivirus"
-    ],
-    "kaspersky": [
-        "zonealarm"
-    ],
-    "kingsoft": [],
-    "lionic": [],
-    "malwarebytes": [],
-    "max": [],
-    "maxsecure": [],
-    "mcafee": [
-        "mcafeegwedition"
-    ],
-    "mcafeegwedition": [
-        "mcafee"
-    ],
-    "microsoft": [],
-    "microworldescan": [
-        "bitdefender"
-    ],
-    "nanoantivirus": [],
-    "nod32": [
-        "esetnod32"
-    ],
-    "norman": [],
-    "nprotect": [
-        "tachyon"
-    ],
-    "paloalto": [],
-    "panda": [],
-    "pctools": [],
-    "qihoo360": [
-        "bitdefender",
-        "antivir",
-        "avira"
-    ],
-    "rising": [],
-    "sangfor": [],
-    "sentinelone": [],
-    "skyhigh": [],
-    "sophos": [
-        "alyac",
-        "invincea"
-    ],
-    "superantispyware": [],
-    "symantec": [
-        "symantecmobileinsight"
-    ],
-    "symantecmobileinsight": [
-        "symantec"
-    ],
-    "tachyon": [
-        "nprotect"
-    ],
-    "tehtris": [],
-    "tencent": [],
-    "thehacker": [],
-    "totaldefense": [
-        "etrustvet"
-    ],
-    "trapmine": [],
-    "trendmicro": [
-        "trendmicrohousecall"
-    ],
-    "trendmicrohousecall": [
-        "trendmicro"
-    ],
-    "trustlook": [],
-    "varist": [],
-    "vba32": [],
-    "vipre": [
-        "avware"
-    ],
-    "virit": [],
-    "virobot": [
-        "bitdefender"
-    ],
-    "virusbuster": [
-        "agnitum",
-        "yandex"
-    ],
-    "webroot": [],
-    "xcitium": [],
-    "yandex": [
-        "agnitum",
-        "virusbuster"
-    ],
-    "zillya": [],
-    "zonealarm": [
-        "kaspersky"
-    ],
-    "zoner": []
+    "acronis": {
+        "corr_avs": [],
+        "av_weight": 1.0
+    },
+    "adaware": {
+        "corr_avs": [
+            "bitdefender"
+        ],
+        "av_weight": 1.0
+    },
+    "agnitum": {
+        "corr_avs": [
+            "virusbuster",
+            "yandex"
+        ],
+        "av_weight": 1.0
+    },
+    "ahnlabv3": {
+        "corr_avs": [],
+        "av_weight": 1.0
+    },
+    "alibaba": {
+        "corr_avs": [
+            "alibaba"
+        ],
+        "av_weight": 1.0
+    },
+    "alibabacloud": {
+        "corr_avs": [
+            "alibaba"
+        ],
+        "av_weight": 1.0
+    },
+    "alyac": {
+        "corr_avs": [
+            "bitdefender",
+            "sophos"
+        ],
+        "av_weight": 1.0
+    },
+    "antivir": {
+        "corr_avs": [
+            "avira",
+            "qihoo360"
+        ],
+        "av_weight": 1.0
+    },
+    "antiyavl": {
+        "corr_avs": [],
+        "av_weight": 1.0
+    },
+    "apex": {
+        "corr_avs": [],
+        "av_weight": 1.0
+    },
+    "arcabit": {
+        "corr_avs": [
+            "bitdefender"
+        ],
+        "av_weight": 1.0
+    },
+    "avast": {
+        "corr_avs": [
+            "avastmobile",
+            "avg"
+        ],
+        "av_weight": 1.0
+    },
+    "avastmobile": {
+        "corr_avs": [
+            "avast",
+            "avg"
+        ],
+        "av_weight": 1.0
+    },
+    "avg": {
+        "corr_avs": [
+            "avast",
+            "avastmobile"
+        ],
+        "av_weight": 1.0
+    },
+    "avira": {
+        "corr_avs": [
+            "antivir",
+            "qihoo360"
+        ],
+        "av_weight": 1.0
+    },
+    "avware": {
+        "corr_avs": [
+            "vipre"
+        ],
+        "av_weight": 1.0
+    },
+    "babable": {
+        "corr_avs": [],
+        "av_weight": 1.0
+    },
+    "baidu": {
+        "corr_avs": [
+            "baiduinternational"
+        ],
+        "av_weight": 1.0
+    },
+    "baiduinternational": {
+        "corr_avs": [
+            "baidu"
+        ],
+        "av_weight": 1.0
+    },
+    "bitdefender": {
+        "corr_avs": [
+            "adaware",
+            "alyac",
+            "arcabit",
+            "bitdefenderfalx",
+            "bitdefendertheta",
+            "emsisoft",
+            "fireeye",
+            "fsecure",
+            "gdata",
+            "microworldescan",
+            "qihoo360",
+            "virobot"
+        ],
+        "av_weight": 1.0
+    },
+    "bitdefenderfalx": {
+        "corr_avs": [
+            "bitdefender",
+            "bitdefendertheta"
+        ],
+        "av_weight": 1.0
+    },
+    "bitdefendertheta": {
+        "corr_avs": [
+            "bitdefender",
+            "bitdefenderfalx"
+        ],
+        "av_weight": 1.0
+    },
+    "bkav": {
+        "corr_avs": [],
+        "av_weight": 1.0
+    },
+    "bytehero": {
+        "corr_avs": [],
+        "av_weight": 1.0
+    },
+    "catquickheal": {
+        "corr_avs": [],
+        "av_weight": 1.0
+    },
+    "clamav": {
+        "corr_avs": [],
+        "av_weight": 1.0
+    },
+    "cmc": {
+        "corr_avs": [],
+        "av_weight": 1.0
+    },
+    "commtouch": {
+        "corr_avs": [
+            "cyren",
+            "fprot"
+        ],
+        "av_weight": 1.0
+    },
+    "comodo": {
+        "corr_avs": [],
+        "av_weight": 1.0
+    },
+    "crowdstrike": {
+        "corr_avs": [],
+        "av_weight": 1.0
+    },
+    "cybereason": {
+        "corr_avs": [],
+        "av_weight": 1.0
+    },
+    "cylance": {
+        "corr_avs": [],
+        "av_weight": 1.0
+    },
+    "cynet": {
+        "corr_avs": [],
+        "av_weight": 1.0
+    },
+    "cyren": {
+        "corr_avs": [
+            "commtouch",
+            "cyrencloud",
+            "fprot"
+        ],
+        "av_weight": 1.0
+    },
+    "cyrencloud": {
+        "corr_avs": [
+            "cyren"
+        ],
+        "av_weight": 1.0
+    },
+    "deepinstinct": {
+        "corr_avs": [],
+        "av_weight": 1.0
+    },
+    "drweb": {
+        "corr_avs": [],
+        "av_weight": 1.0
+    },
+    "egambit": {
+        "corr_avs": [],
+        "av_weight": 1.0
+    },
+    "elastic": {
+        "corr_avs": [],
+        "av_weight": 1.0
+    },
+    "emsisoft": {
+        "corr_avs": [
+            "bitdefender"
+        ],
+        "av_weight": 1.0
+    },
+    "endgame": {
+        "corr_avs": [],
+        "av_weight": 1.0
+    },
+    "esafe": {
+        "corr_avs": [],
+        "av_weight": 1.0
+    },
+    "esetnod32": {
+        "corr_avs": [
+            "nod32"
+        ],
+        "av_weight": 1.0
+    },
+    "etrustvet": {
+        "corr_avs": [
+            "totaldefense"
+        ],
+        "av_weight": 1.0
+    },
+    "fireeye": {
+        "corr_avs": [
+            "bitdefender"
+        ],
+        "av_weight": 1.0
+    },
+    "fortinet": {
+        "corr_avs": [],
+        "av_weight": 1.0
+    },
+    "fprot": {
+        "corr_avs": [
+            "commtouch",
+            "cyren"
+        ],
+        "av_weight": 1.0
+    },
+    "fsecure": {
+        "corr_avs": [
+            "bitdefender"
+        ],
+        "av_weight": 1.0
+    },
+    "gdata": {
+        "corr_avs": [
+            "bitdefender"
+        ],
+        "av_weight": 1.0
+    },
+    "google": {
+        "corr_avs": [],
+        "av_weight": 1.0
+    },
+    "gridinsoft": {
+        "corr_avs": [],
+        "av_weight": 1.0
+    },
+    "ikarus": {
+        "corr_avs": [],
+        "av_weight": 1.0
+    },
+    "invincea": {
+        "corr_avs": [
+            "sophos"
+        ],
+        "av_weight": 1.0
+    },
+    "jiangmin": {
+        "corr_avs": [],
+        "av_weight": 1.0
+    },
+    "k7antivirus": {
+        "corr_avs": [
+            "k7gw"
+        ],
+        "av_weight": 1.0
+    },
+    "k7gw": {
+        "corr_avs": [
+            "k7antivirus"
+        ],
+        "av_weight": 1.0
+    },
+    "kaspersky": {
+        "corr_avs": [
+            "zonealarm"
+        ],
+        "av_weight": 1.0
+    },
+    "kingsoft": {
+        "corr_avs": [],
+        "av_weight": 1.0
+    },
+    "lionic": {
+        "corr_avs": [],
+        "av_weight": 1.0
+    },
+    "malwarebytes": {
+        "corr_avs": [],
+        "av_weight": 1.0
+    },
+    "max": {
+        "corr_avs": [],
+        "av_weight": 1.0
+    },
+    "maxsecure": {
+        "corr_avs": [],
+        "av_weight": 1.0
+    },
+    "mcafee": {
+        "corr_avs": [
+            "mcafeegwedition"
+        ],
+        "av_weight": 1.0
+    },
+    "mcafeegwedition": {
+        "corr_avs": [
+            "mcafee"
+        ],
+        "av_weight": 1.0
+    },
+    "microsoft": {
+        "corr_avs": [],
+        "av_weight": 1.0
+    },
+    "microworldescan": {
+        "corr_avs": [
+            "bitdefender"
+        ],
+        "av_weight": 1.0
+    },
+    "nanoantivirus": {
+        "corr_avs": [],
+        "av_weight": 1.0
+    },
+    "nod32": {
+        "corr_avs": [
+            "esetnod32"
+        ],
+        "av_weight": 1.0
+    },
+    "norman": {
+        "corr_avs": [],
+        "av_weight": 1.0
+    },
+    "nprotect": {
+        "corr_avs": [
+            "tachyon"
+        ],
+        "av_weight": 1.0
+    },
+    "paloalto": {
+        "corr_avs": [],
+        "av_weight": 1.0
+    },
+    "panda": {
+        "corr_avs": [],
+        "av_weight": 1.0
+    },
+    "pctools": {
+        "corr_avs": [],
+        "av_weight": 1.0
+    },
+    "qihoo360": {
+        "corr_avs": [
+            "antivir",
+            "avira",
+            "bitdefender"
+        ],
+        "av_weight": 1.0
+    },
+    "rising": {
+        "corr_avs": [],
+        "av_weight": 1.0
+    },
+    "sangfor": {
+        "corr_avs": [],
+        "av_weight": 1.0
+    },
+    "sentinelone": {
+        "corr_avs": [],
+        "av_weight": 1.0
+    },
+    "skyhigh": {
+        "corr_avs": [],
+        "av_weight": 1.0
+    },
+    "sophos": {
+        "corr_avs": [
+            "alyac",
+            "invincea"
+        ],
+        "av_weight": 1.0
+    },
+    "superantispyware": {
+        "corr_avs": [],
+        "av_weight": 1.0
+    },
+    "symantec": {
+        "corr_avs": [
+            "symantecmobileinsight"
+        ],
+        "av_weight": 1.0
+    },
+    "symantecmobileinsight": {
+        "corr_avs": [
+            "symantec"
+        ],
+        "av_weight": 1.0
+    },
+    "tachyon": {
+        "corr_avs": [
+            "nprotect"
+        ],
+        "av_weight": 1.0
+    },
+    "tehtris": {
+        "corr_avs": [],
+        "av_weight": 1.0
+    },
+    "tencent": {
+        "corr_avs": [],
+        "av_weight": 1.0
+    },
+    "thehacker": {
+        "corr_avs": [],
+        "av_weight": 1.0
+    },
+    "totaldefense": {
+        "corr_avs": [
+            "etrustvet"
+        ],
+        "av_weight": 1.0
+    },
+    "trapmine": {
+        "corr_avs": [],
+        "av_weight": 1.0
+    },
+    "trendmicro": {
+        "corr_avs": [
+            "trendmicrohousecall"
+        ],
+        "av_weight": 1.0
+    },
+    "trendmicrohousecall": {
+        "corr_avs": [
+            "trendmicro"
+        ],
+        "av_weight": 1.0
+    },
+    "trustlook": {
+        "corr_avs": [],
+        "av_weight": 1.0
+    },
+    "varist": {
+        "corr_avs": [],
+        "av_weight": 1.0
+    },
+    "vba32": {
+        "corr_avs": [],
+        "av_weight": 1.0
+    },
+    "vipre": {
+        "corr_avs": [
+            "avware"
+        ],
+        "av_weight": 1.0
+    },
+    "virit": {
+        "corr_avs": [],
+        "av_weight": 1.0
+    },
+    "virobot": {
+        "corr_avs": [
+            "bitdefender"
+        ],
+        "av_weight": 1.0
+    },
+    "virusbuster": {
+        "corr_avs": [
+            "agnitum",
+            "yandex"
+        ],
+        "av_weight": 1.0
+    },
+    "webroot": {
+        "corr_avs": [],
+        "av_weight": 1.0
+    },
+    "xcitium": {
+        "corr_avs": [],
+        "av_weight": 1.0
+    },
+    "yandex": {
+        "corr_avs": [
+            "agnitum",
+            "virusbuster"
+        ],
+        "av_weight": 1.0
+    },
+    "zillya": {
+        "corr_avs": [],
+        "av_weight": 1.0
+    },
+    "zonealarm": {
+        "corr_avs": [
+            "kaspersky"
+        ],
+        "av_weight": 1.0
+    },
+    "zoner": {
+        "corr_avs": [],
+        "av_weight": 1.0
+    }
 }

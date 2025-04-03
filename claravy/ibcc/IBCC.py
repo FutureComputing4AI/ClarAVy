@@ -16,11 +16,12 @@ logger = logging.getLogger("ClarAVy")
 # Adapted from https://github.com/UKPLab/arxiv2018-bayesian-ensembles/blob/
 # master/src/bayesian_combination/bayesian_combination.py
 class IBCC:
-    def __init__(self, L, K, max_iter=100, eps=1e-3, beta0_factor=1.0,
+    def __init__(self, L, K, W, max_iter=100, eps=1e-3, beta0_factor=1.0,
                  n_jobs=-1, verbose=False):
         """
         L - Number of labels
         K - Number of annotators
+        W - Annotator weights
         max_iter - Maximum number of Variational Bayes iterations
         eps - Convergence threshold
         beta0_factor - hyperparameter for the label model. This acts as
@@ -33,6 +34,7 @@ class IBCC:
 
         self.L = L
         self.K = K
+        self.W = W
         self.max_iter = max_iter
         self.eps = eps
         self.beta0_factor = beta0_factor
@@ -121,7 +123,7 @@ class IBCC:
         # Initialize the annotator model
         self.A = ConfusionMatrixAnnotator(co_occurs, scan_labels,
                                           label_offsets, scan_offsets, self.L,
-                                          self.K, self.n_jobs)
+                                          self.K, self.W, self.n_jobs)
 
         # Run the Variational Bayes inference loop
         while not self._converged():

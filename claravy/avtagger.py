@@ -274,6 +274,7 @@ def main_cli():
     # Output tagging results and track family annotations
     C = np.zeros((N, K), dtype=np.int32) - 1
     X = np.zeros((N, 7), dtype=np.float64)
+    W = np.array(av_parser.av_weights, dtype=np.float64)
     confidence_scores = np.zeros(N, dtype=np.float64)
     detect_ratios = []
     hashes = []
@@ -409,6 +410,7 @@ def main_cli():
         ibcc_model = IBCC(
             L=L+1,
             K=K,
+            W=W,
             max_iter=1,
             eps=0.01,
             beta0_factor = N / 100,
