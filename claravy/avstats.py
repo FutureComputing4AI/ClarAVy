@@ -281,17 +281,17 @@ class AVStats:
         # be updated
         # Map vocab back to tokens, and track stats about tokens
         self.tax_tokens = {
-            FAM = set(),
-            GRP = set(),
-            FILE = set(),
-            CAT = set(),
-            PACK = set(),
-            VULN = set(),
-            PRE = set(),
-            SUF = set(),
-            HEUR = set(),
-            UNK = set(),
-            NULL = set()
+            FAM: set(),
+            GRP: set(),
+            FILE: set(),
+            CAT: set(),
+            PACK: set(),
+            VULN: set(),
+            PRE: set(),
+            SUF: set(),
+            HEUR: set(),
+            UNK: set(),
+            NULL: set()
         }
         self.token_counts = {}
         for tok, tax in token_vocab.items():
