@@ -25,7 +25,8 @@ dependencies = [
     "joblib",
     "numba>=0.61.0",
     "numba-scipy>=0.4.0",
-    "scikit-learn==1.5.2"
+    "scikit-learn==1.5.2",
+    "orjson>=3.10.18"
 ]
 [project.scripts]
 claravy = "claravy.avtagger:main_cli"

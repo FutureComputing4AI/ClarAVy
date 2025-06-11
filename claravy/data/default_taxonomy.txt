@@ -6843,6 +6843,16 @@ wrm
 wrom
 xploit
 zerodaythreat
+fakapp
+disabler
+gametool
+psdownload
+pswsteal
+gametool
+malformed
+scamapp
+processhijack
+smssend
 
 [FILE]
 591591script
@@ -7374,6 +7384,9 @@ yzpack1
 zipmonster
 zprotect
 
+[VULN]
+cve
+
 [PRE]
 aauto
 adload
@@ -7568,6 +7581,14 @@ yakes
 ymacco
 zenpak
 zusy
+agnt
+sagnt
+spyagnt
+eicar
+test
+kryptikagen
+obfuscate
+linker
 
 [HEUR]
 advheur
@@ -7650,6 +7671,7 @@ sgeneric
 sheur
 susgen
 susp
+suspbehav
 suspected
 suspectfile
 suspicious

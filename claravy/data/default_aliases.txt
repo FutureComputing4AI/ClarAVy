@@ -19,6 +19,7 @@ agenda	agendacrypt
 comrat	agentbtz
 agnsmit	agentsmith
 agentesla	agenttesla
+agentteslanet	agenttesla
 agensla	agenttesla
 negasteal	agenttesla
 spyahmyth	ahmyth
@@ -135,8 +136,11 @@ bedep64	bedep
 rozena	bedep
 bazarbackdoor	beerbot
 team9backdoor	beerbot
-webber	berbew
+padodo	berbew
 padodor	berbew
+padowor	berbew
+qukart	berbew
+webber	berbew
 posbernhard	bernhardpos
 neurevt	betabot
 biandoor	bianlian
@@ -400,6 +404,8 @@ diamondfoxcrystal	diamondfox
 dinodasrat	dinodas
 dinwoodaattc	dinwod
 redsalt	dipsind
+discord	discordbot
+discordnet	discordbot
 discordia	discordiaminer
 javadispcash	dispcash
 atmdispcash	dispcash
@@ -683,6 +689,7 @@ foxblade	hermeticwiper
 herpbot	herpes
 heyokamod	heyoka
 hiatusr	hiatusrat
+hiddenads	hiddad
 cryptear	hiddentear
 hiddentears	hiddentear
 tear	hiddentear
@@ -1413,6 +1420,7 @@ slisp	silversparrow
 slvspr	silversparrow
 taidoor	simbot
 sinimast	sinimasest
+senoval	sinowal
 skimernc	skimer
 skimerwc	skimer
 skimmer	skimer
@@ -1638,6 +1646,7 @@ hesetox	vskimmer
 vulture	vultur
 ratvultur	vultur
 deathransom	wacatac
+wacapew	wacatac
 wannacryptor	wannacry
 wanna	wannacry
 wannacrypt	wannacry
@@ -1850,6 +1859,7 @@ voodoobear	sandworm
 starcruft	scarcruft
 whitebear	skipperturla
 promethium	strongpity
+strongpity2	strongpity
 strongpity3	strongpity
 tonto	tontoteam
 uroburos	turla
@@ -2266,6 +2276,7 @@ cryptom	cryptor
 cryptop	cryptor
 cryptos	cryptor
 cryptow	cryptor
+krypt	cryptor
 krypt12	cryptor
 cryptov	cryptor
 cryptool	cryptor
@@ -3211,6 +3222,7 @@ inject5	injector
 dllinjector	injector
 dllinject	injector
 aitinject	injector
+bcryptinject	inject
 adinstaller	installer
 installm	installer
 instally	installer
@@ -3339,6 +3351,7 @@ killprocs	killproc
 crypton	krypt
 cryptone	krypt
 binlodr	loader
+driverloader	loader
 spyloader	loader
 oader	loader
 lockscreenb	lockscreen
@@ -3354,6 +3367,7 @@ network1	network
 networkd	network
 networks	network
 networkw	network
+notifyer	notifier
 trojannotifier	notifier
 nuke	nuker
 nuke0	nuker
@@ -3533,6 +3547,7 @@ remoxec	remoteshell
 remote	remoteshell
 shellbot	remoteshell
 shellcoderunner	remoteshell
+repackedt	repacked
 abrisk	riskware
 rishware	riskware
 risk	riskware

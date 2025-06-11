@@ -1,6 +1,6 @@
 import re
 import sys
-import json
+import orjson as json
 import math
 import string
 import logging
@@ -376,6 +376,9 @@ class AVParse():
                 tokens[i+1].isnumeric() and tokens[i+2].isnumeric()):
                 annos[i:i+3] = [VULN, VULN, VULN]
                 continue
+            if tok.startswith("cve") and len(tok) > 10 and tok[3:].isnumeric():
+                annos[i] = VULN
+                continue
             if (i < len(tokens) - 1 and tokens[i+1].isnumeric() and
                   re.match(self.CVE_FOUR_RNUM, tok)):
                 annos[i:i+2] = [VULN, VULN]
@@ -503,6 +506,10 @@ class AVParse():
                 vuln_tok = "cve_{}_{}".format(vuln_tok[3:7], vuln_tok[7:])
                 vuln_tokens = [vuln_tok]
 
+        # Failed to parse
+        if len(vuln_tokens) == 1 and vuln_tokens[0] in ["cve", "ms"]:
+            return []
+
         return vuln_tokens
 
 
@@ -557,8 +564,9 @@ class AVParse():
         report = []
         try:
             report = json.loads(report_json)
-        except (json.decoder.JSONDecodeError, UnicodeDecodeError):
+        except (json.JSONDecodeError, UnicodeDecodeError):
             is_valid = False
+            print("Unable to parse:", report_json)
 
         # Check that contents of scan report is valid
         if not len(report):
@@ -684,7 +692,12 @@ class AVParse():
                 is_heur = False
                 if norm_label in self.av_heur_labels[av]:
                     is_heur = True
-                tax_tokens[VULN] = self.replace_vuln_tokens(tax_tokens[VULN])
+                if len(tax_tokens[VULN]):
+                    print(av, label, tax_tokens[VULN])
+                    tax_tokens[VULN] = self.replace_vuln_tokens(tax_tokens[VULN])
+                    print(av, label, tax_tokens[VULN])
+                    print()
+                    sys.stdout.flush()
                 for tax, tokens in tax_tokens.items():
                     for tok in tokens:
                         if tax == FAM and is_heur:

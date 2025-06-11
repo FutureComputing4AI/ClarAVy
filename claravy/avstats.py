@@ -280,13 +280,23 @@ class AVStats:
         # Now that we have a token taxonomy, we have other stats that need to
         # be updated
         # Map vocab back to tokens, and track stats about tokens
-        self.tax_tokens = {}
+        self.tax_tokens = {
+            FAM = set(),
+            GRP = set(),
+            FILE = set(),
+            CAT = set(),
+            PACK = set(),
+            VULN = set(),
+            PRE = set(),
+            SUF = set(),
+            HEUR = set(),
+            UNK = set(),
+            NULL = set()
+        }
         self.token_counts = {}
         for tok, tax in token_vocab.items():
 
             # Map vocab -> tokens
-            if self.tax_tokens.get(tax) is None:
-                self.tax_tokens[tax] = set()
             self.tax_tokens[tax].add(tok)
 
             # Track token counts
