@@ -1,7 +1,20 @@
-import numba
-import scipy.special as sc
+import ctypes
 import numpy as np
-from numba import jit
+from numba import jit, vectorize
+from numba.extending import get_cython_function_address
+
+
+_psi_address = get_cython_function_address(
+    "scipy.special.cython_special", "__pyx_fuse_1psi"
+)
+_psi = ctypes.CFUNCTYPE(ctypes.c_double, ctypes.c_double, ctypes.c_int)(_psi_address)
+
+
+@vectorize(["float64(float64)"])
+def psi(X):
+    # The second native argument bypasses Cython's Python dispatch.
+    return _psi(X, 1)
+
 
 @jit(nopython=True)
 def unique(X):
@@ -16,8 +29,3 @@ def unique(X):
         else:
             counts[-1] += 1
     return unique, counts
-
-
-@numba.vectorize
-def psi(X):
-    return sc.psi(X)
